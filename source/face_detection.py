@@ -1,17 +1,15 @@
 import cv2
 import numpy as np 
-from source.utils import get_folder_dir
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 from keras.models import load_model
 
 def detect_faces_with_ssd(image, min_confidence = 0.2):
     faces_list = []
-    models_dir = get_folder_dir("models") 
-    prototxt_filename = "deploy.prototxt.txt"
-    model_filename = "res10_300x300_ssd_iter_140000.caffemodel"
-    net = cv2.dnn.readNetFromCaffe(models_dir + prototxt_filename, 
-                                   models_dir + model_filename)
+    prototxt_filename = "/models/deploy.prototxt.txt"
+    model_filename = "/models/res10_300x300_ssd_iter_140000.caffemodel"
+    net = cv2.dnn.readNetFromCaffe(os.getcwd() + prototxt_filename, 
+                                   os.getcwd() + model_filename)
     (image_height, image_width) = image.shape[:2]
     resized_image = cv2.resize(image, (300, 300))
     blob = cv2.dnn.blobFromImage(resized_image,
@@ -44,7 +42,7 @@ def detect_faces_with_ssd(image, min_confidence = 0.2):
 def run_model(img):
     faces = detect_faces_with_ssd(img)
     new_img = img
-    model5 = load_model('P:/Mask/models/masknet.h5')
+    model5 = load_model(os.getcwd() +'/models/masknet.h5')
     mask_label = {0:'MASK',1:'KHONG MASK'}
     dist_label = {0:(0,255,0),1:(255,0,0)}
     if len(faces) >= 1:

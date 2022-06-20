@@ -19,18 +19,6 @@ def home():
 def love():
   return "HELLO"
 
-@app.route('/detect', methods=['POST'])
-def detect():
-    file = request.files['image']
-
-    # Read image
-    image = read_image(file)
-    
-    # Detect faces
-    faces = detect_faces_with_ssd(image, min_confidence=DETECTION_THRESHOLD)
-
-    return jsonify(detections = faces)
-
 @app.route('/upload', methods=['POST'])
 def upload():
     file = request.files['image']
@@ -41,8 +29,6 @@ def upload():
     
     # Draw detection rects
     num_faces, image = draw_rectangles(image, faces)
-    
-    # Prepare image for html
     to_send = prepare_image(image)
     print(faces)
     return render_template('index.html', face_detected=len(faces)>0, num_faces=len(faces), image_to_show=to_send, init=True)

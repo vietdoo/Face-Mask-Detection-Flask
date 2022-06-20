@@ -58,8 +58,3 @@ def prepare_image(image):
 
 def plot_image(image):
     plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-
-def get_folder_dir(folder_name):
-    cur_dir = os.getcwd()
-    folder_dir = cur_dir + "/" + folder_name + "/"
-    return folder_dir
