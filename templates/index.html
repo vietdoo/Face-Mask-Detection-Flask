@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/style.css">
     <meta charset="UTF-8">
-    <title>Nhóm 9 NMKHDL</title>
+    <title>AI Server @Group 9</title>
     <link rel="apple-touch-icon" href="https://vietdoo.ml/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="https://vietdoo.ml/favicon-32x32.png " sizes="32x32" type="image/png">
 	<link rel="icon" href="https://vietdoo.ml/favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="icon" href="https://vietdoo.ml/favicon.ico">
 </head>
 <body>
+<div class="page-img">
+    <img src="/static/home.jpg" class="img-fluid" alt="">
+</div>
     <!-- Canvas -->
 <canvas class="orb-canvas"></canvas>
 <!-- Overlay -->
@@ -20,12 +23,12 @@
         <div class="text-container">
             <div class = "container">
                 <div class = "starter-template">
-                    <h1>Mask Detection Version 1.0.8</h1>
+                    <h1>Mask Detection Version 1.2.9</h1>
                 </br>
-                    <p><a href="https://arxiv.org/pdf/1409.1556v6.pdf" target="blank"> VGG16</a> | Flask, Caffe, OpenCV </p>
-                    <p>Intel(R) Xeon(R) CPU @ 2.60GHz</p>
+                    <p><a href="https://arxiv.org/abs/1608.06993" target="blank"> DenseNet-201</a> | Flask, Caffe, Keras </p>
+                    <p>Intel(R) Xeon(R) CPU @ 2.80GHz</p>
                     <p>Memory: 4 GB</p>
-                    <p> Kích thước tối đa: 10 MB </p>
+                    <p> Maximum size: 10 MB </p>
                     <p id="logo">By
                     <a href="https://vietdoo.codes">vietdoo</a> - June, 2022
                     </p>
@@ -45,7 +48,6 @@
                 </header>
             </div>
         </div>
-    
         
         <div class="img-container">
             {% if init %}
@@ -64,15 +66,14 @@
                     </div>
                 {% endif %}
             {% endif %}
+
         </div>
 </div>
 <script src="main.js"></script>
 </body>
-<!--
-<footer>
-    <div class="makeby">
-        Được phát triển và thiết kế bởi <a href="https://github.com/unripe-mango">unripe mango<img class="mango" src="/static/mango.png"></a>
-    </div>
-</footer>
--->
+
+<div class="makeby">
+    Được phát triển và thiết kế bởi <a href="https://github.com/unripe-mango">unripe mango<img class="mango" src="/static/mango.png"></a>
+</div>
+
 </html>

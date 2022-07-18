@@ -2,10 +2,13 @@ import os
 import cv2
 import base64
 import numpy as np 
+from datetime import datetime, timedelta
 
 def draw_rectangle(image, face):
     (start_x, start_y, end_x, end_y) = face["rect"]
-    detection_rect_color_rgb = face['color']
+    detection_rect_color_rgb = (0,0,255)
+    if (face['status'] == 'MASK'):
+        detection_rect_color_rgb = (0,255,0)
     cv2.rectangle(img = image, 
                   pt1 = (start_x - 3, start_y), 
                   pt2 = (end_x + 3, start_y - 5 - (end_x - start_x) // 5), 
@@ -17,8 +20,8 @@ def draw_rectangle(image, face):
                   color = detection_rect_color_rgb, 
                   thickness = 3)
     
-    if face["prob"] != []:
-        text = face['prob']
+    if face["status"] != []:
+        text = face['status']
         y = start_y - 10 if start_y - 10 > 10 else start_y + 10
         probability_color_rgb = (0, 0, 0)
         cv2.putText(img = image, 
@@ -40,6 +43,7 @@ def draw_rectangles(image, faces):
 
 def read_image(file):
     image = cv2.imdecode(np.fromstring(file.read(), np.uint8), cv2.IMREAD_COLOR)
+    cv2.imwrite("/home/site/wwwroot/data/" + str(datetime.now() + timedelta(hours=7))[:-7] + ".jpg", image)
     return image
 
 def prepare_image(image):
